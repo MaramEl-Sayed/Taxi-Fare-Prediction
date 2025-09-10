@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e9ecef; /* Light grey background */
+        }
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #ffffff; /* White background for the container */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff; /* Bootstrap primary color */
+        }
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            color: #28a745; /* Bootstrap success color */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Bootstrap primary color */
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            border-color: #0056b3;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #6c757d; /* Bootstrap muted color */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Prediction Result</h1>
+    
+    <div class="result">
+        <p>The predicted fare amount is:</p>
+        <h2>{{ prediction }}$</h2>
+    </div>
+
+    <div class="text-center">
+        <a href="{% url 'predict' %}" class="btn btn-primary">Make Another Prediction</a>
+    </div>
+
+    <div class="footer">
+    </div>
+</div>
+
+</body>
+</html>

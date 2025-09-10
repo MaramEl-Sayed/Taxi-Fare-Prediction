@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New York Taxi Fare Prediction</title>
+    <style>
+        body {
+            background-image: url('{% static "/images/taxi.jpg" %}');
+            background-size: cover;
+            color: white; 
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="number"], input[type="text"], select {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 5px;
+        }
+        .flex-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .flex-row div {
+            margin-right: 16px; /* Add spacing between the two input fields */
+        }
+        .flex-row div:first-child {
+            margin-left: 0px; /* Add margin to the left input only */
+        }
+        .flex-row input {
+            width: calc(100% - 15px); /* Adjusting for spacing */
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Taxi Fare Prediction</h1>
+
+    <form action="result">
+
+        <label>Car Condition:</label>
+        <select name="car_condition" required>
+            <option value="">Select...</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Very Good">Very Good</option>
+            <option value="Good">Good</option>
+            <option value="Bad">Bad</option>
+        </select>
+
+        <label>Traffic Condition:</label>
+        <select name="traffic_condition" required>
+            <option value="">Select...</option>
+            <option value="Congested Traffic">Congested Traffic</option>
+            <option value="Flow Traffic">Flow Traffic</option>
+            <option value="Dense Traffic">Dense Traffic</option>
+        </select>
+        
+        <label>Weather Condition:</label>
+        <select name="weather_condition" required>
+            <option value="">Select...</option>
+            <option value="Windy">Windy</option>
+            <option value="Cloudy">Cloudy</option>
+            <option value="Stormy">Stormy</option>
+            <option value="Sunny">Sunny</option>
+            <option value="Rainy">Rainy</option>
+        </select>
+
+        <label>Passenger Count:</label>
+        <input type="number" name="passenger_count" placeholder="e.g., 1" min="1" required>
+
+        <label>Distance from New York City Center :</label>
+        <input type="number" name="nyc_dist" placeholder="e.g., 5"  required>
+
+        <div class="flex-row">
+            <div>
+                <label>Hour:</label>
+                <input type="number" name="hour" step = any placeholder="e.g., 17" min="0" max="23" required>
+            </div>
+            <div>
+                <label>Month:</label>
+                <input type="number" name="month" step = any placeholder="e.g., 12" min="1" max="12" required>
+            </div>
+        </div>
+
+        <div class="flex-row">
+            <div>
+                <label>Week Day:</label>
+                <input type="number" name="week_day" step = any placeholder="e.g., 5" min="1" max="7" required>
+            </div>
+            <div>
+                <label>Day:</label>
+                <input type="number" name="day" step = any placeholder="e.g., 5" min="1" max="31" required>
+            </div>
+        </div>
+
+        <div class="flex-row">
+            <div>
+                <label>Pickup Longitude:</label>
+                <input type="number" step="any" name="pickup_longitude" placeholder="e.g., -1.288826" required>
+            </div>
+            <div>
+                <label>Pickup Latitude:</label>
+                <input type="number" step="any" name="pickup_latitude" placeholder="e.g., 0.710721" required>
+            </div>
+        </div>
+
+        <div class="flex-row">
+            <div>
+                <label>Dropoff Longitude:</label>
+                <input type="number" step="any" name="dropoff_longitude" placeholder="e.g., -1.288779" required>
+            </div>
+            <div>
+                <label>Dropoff Latitude:</label>
+                <input type="number" step="any" name="dropoff_latitude" placeholder="e.g., 0.710563" required>
+            </div>
+        </div>
+    
+        <div class="flex-row">
+            <div>
+                <label>JFK Distance:</label>
+                <input type="number" step="any" name="jfk_dist" placeholder="e.g., 20.26" required>
+            </div>
+            <div>
+                <label>Sol Distance:</label>
+                <input type="number" step="any" name="sol_dist" placeholder="e.g., 34.54" required>
+            </div>
+        </div>
+
+        <div class="flex-row">
+            <div>
+                <label>LGA Distance:</label>
+                <input type="number" step="any" name="lga_dist" placeholder="e.g., 14.34" required>
+            </div>
+            <div>
+                <label>EWR Distance:</label>
+                <input type="number" step="any" name="ewr_dist" placeholder="e.g., 55.17" required>
+            </div>
+        </div>
+
+
+        <div class="flex-row">
+            <div>
+                <label>Distance:</label>
+                <input type="number" step="any" name="distance" placeholder="e.g., 1.03" required>
+            </div>
+            <div>
+                <label>Bearing:</label>
+                <input type="number" step="any" name="bearing" placeholder="e.g., -2.91" required>
+            </div>
+        </div>
+
+        <button><type="submit"> Predict Fare </button> 
+
+    </form>
+</div>
+
+</body>
+</html>
